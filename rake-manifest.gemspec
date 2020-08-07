@@ -1,4 +1,6 @@
-require_relative 'lib/rake/manifest/version'
+# frozen_string_literal: true
+
+require_relative "lib/rake/manifest/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "rake-manifest"
@@ -19,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.files = File.read("Manifest.txt").split
   spec.require_paths = ["lib"]
 
+  spec.add_development_dependency "pry", "~> 0.13.1"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "pry", "~> 0.13.1"
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Rake::Manifest::Task do
   let(:rake) { Rake::Application.new }
 
