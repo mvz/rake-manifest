@@ -1,0 +1,7 @@
+lib/rake
+lib/rake/manifest
+lib/rake/manifest.rb
+lib/rake/manifest/task.rb
+lib/rake/manifest/version.rb
+LICENSE.txt
+README.md
