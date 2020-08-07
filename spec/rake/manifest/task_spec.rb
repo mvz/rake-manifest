@@ -8,10 +8,10 @@ RSpec.describe Rake::Manifest::Task do
   end
 
   it "sets up manifest:generate and manifest:check tasks" do
-    expect(rake.tasks).to be_empty
-    described_class.new
-    expect(rake.tasks.map(&:name))
-      .to match_array ["manifest:check", "manifest:generate"]
+    expect { described_class.new }
+      .to change { rake.tasks.map(&:name) }
+      .from([])
+      .to ["manifest:check", "manifest:generate"]
   end
 
   it "has default setting for manifest file" do
