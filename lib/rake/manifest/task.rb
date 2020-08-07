@@ -2,9 +2,9 @@
 
 require "rake/tasklib"
 
-# Tasks to create and check manifest file
 module Rake
   module Manifest
+    # Tasks to create and check manifest file
     class Task < Rake::TaskLib
       attr_accessor :manifest_file, :patterns
 
@@ -31,20 +31,27 @@ module Rake
         File.read(manifest_file).split
       end
 
-      def define_tasks
+      def define_generate_task
         desc "Create or update manifest"
         task :generate do
           File.open("Manifest.txt", "w") do |manifest|
             gemmable_files.each { |file| manifest.puts file }
           end
         end
+      end
 
+      def define_check_task
         desc "Check manifest"
         task :check do
           unless gemmable_files == manifest_files
             raise "Manifest check failed, try recreating the manifest"
           end
         end
+      end
+
+      def define_tasks
+        define_generate_task
+        define_check_task
       end
     end
   end
