@@ -2,9 +2,9 @@
 
 require "rake/tasklib"
 
-# Tasks to create and check manifest file
 module Rake
   module Manifest
+    # Tasks to create and check manifest file
     class Task < Rake::TaskLib
       attr_accessor :manifest_file, :patterns
 
