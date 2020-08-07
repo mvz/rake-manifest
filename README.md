@@ -24,8 +24,29 @@ Add something like the following to your `Rakefile`:
 
 ```ruby
 Rake::Manifest::Task.new do |t|
-  t.patterns = ["{docs,examples,lib}/**/*", "LICENSE.txt"]
+  t.patterns = ["{docs,examples,lib}/**/*", "LICENSE.txt"] # Default is ["**/*"]
+  t.manifest_file = "MyManifest.txt" # Default is "Manifest.txt"
 end
+```
+
+This will create the tasks `manifest:generate` and `manifest:check`.
+
+Next, run `manifest:generate` to create your manifest file, and check it into
+source control.
+
+To use the manifest file, use something like the following in your gemspec:
+
+```ruby
+  spec.files = File.read("Manifest.txt").split
+```
+
+You can use `manifest:check` to see if any files are not in the manifest. If
+you have a task for building your gem, you can make it depend on
+`manifest:check`. This will avoid building the gem with incorrect contents. For
+example, if you're using the Bundler gem tasks, add this to your `Rakefile`:
+
+```ruby
+task build: "manifest:check"
 ```
 
 ## Development
