@@ -1,4 +1,5 @@
 require "rake/manifest/version"
+require "rake/manifest/task"
 
 module Rake
   module Manifest
