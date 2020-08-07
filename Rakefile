@@ -4,7 +4,7 @@ require "rake/manifest"
 
 RSpec::Core::RakeTask.new(:spec)
 Rake::Manifest::Task.new do |t|
-  t.patterns = ["lib/**/*", "LICENSE.txt", "README.md"]
+  t.patterns = ["lib/**/*", "LICENSE.txt", "*.md"]
 end
 
 task :default => :spec
