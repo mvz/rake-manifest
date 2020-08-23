@@ -34,7 +34,7 @@ module Rake
       def define_generate_task
         desc "Create or update manifest"
         task :generate do
-          File.open("Manifest.txt", "w") do |manifest|
+          File.open(manifest_file, "w") do |manifest|
             gemmable_files.each { |file| manifest.puts file }
           end
         end

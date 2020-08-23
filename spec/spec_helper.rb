@@ -2,7 +2,7 @@
 
 require "bundler/setup"
 
-require 'simplecov'
+require "simplecov"
 SimpleCov.start do
   add_group "Main", "lib"
   add_group "Specs", "spec"
