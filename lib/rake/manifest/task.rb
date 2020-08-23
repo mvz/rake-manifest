@@ -24,7 +24,7 @@ module Rake
       private
 
       def gemmable_files
-        Rake::FileList.new(*patterns)
+        Rake::FileList.new(*patterns).existing
       end
 
       def manifest_files

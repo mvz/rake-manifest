@@ -51,5 +51,13 @@ RSpec.describe Rake::Manifest::Task do
         expect(File.exist?("Manifest.txt")).to be_falsy
       end
     end
+
+    it "skips literal file names that do not exist" do
+      described_class.new { |c| c.patterns = ["*.rb", "FOO"] }
+      FileUtils.touch "foo.rb"
+      rake.invoke_task "manifest:generate"
+      manifest = File.read("Manifest.txt")
+      expect(manifest).to eq "foo.rb\n"
+    end
   end
 end
