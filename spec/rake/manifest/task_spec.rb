@@ -60,4 +60,34 @@ RSpec.describe Rake::Manifest::Task do
       expect(manifest).to eq "foo.rb\n"
     end
   end
+
+  describe "the manifest:check task" do
+    let(:tmpdir) { Dir.mktmpdir }
+
+    before do
+      Dir.chdir tmpdir
+    end
+
+    after do
+      Dir.chdir __dir__
+      FileUtils.remove_entry tmpdir
+    end
+
+    it "checks using the specified manifest file" do
+      FileUtils.touch "foo.rb"
+      File.write("MyManifest.txt", "MyManifest.txt\nfoo.rb\n")
+
+      described_class.new { |c| c.manifest_file = "MyManifest.txt" }
+      expect { rake.invoke_task "manifest:check" }.not_to raise_error
+    end
+
+    it "detects when literal file names from the patterns do not exist" do
+      FileUtils.touch "foo.rb"
+      File.write("Manifest.txt", "foo.rb\nFOO\n")
+
+      described_class.new { |c| c.patterns = ["*.rb", "FOO"] }
+      expect { rake.invoke_task "manifest:check" }
+        .to raise_error "Manifest check failed, try recreating the manifest"
+    end
+  end
 end
