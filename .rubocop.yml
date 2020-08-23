@@ -42,11 +42,6 @@ Metrics/BlockLength:
     - 'spec/**/*' # Spec describe blocks can be any size
     - '*.gemspec' # Gem spec blocks can be any size
 
-# require_relative makes sense in gemspec
-Packaging/RelativeRequireToLib:
-  Exclude:
-    - '*.gemspec'
-
 Performance/StartWith:
   AutoCorrect: true
 
