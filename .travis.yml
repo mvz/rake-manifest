@@ -1,6 +1,12 @@
 ---
 language: ruby
-cache: bundler
+
+before_install:
+  gem install bundler -v 2.1.4
+
+cache:
+  bundler: true
+
 script: bundle exec rake
 
 jobs:
@@ -10,10 +16,9 @@ jobs:
     - rvm: 2.6.6
     - rvm: 2.7.1
     - rvm: 2.7.1
+      name: "RuboCop"
       script: bundle exec rubocop
 
 branches:
   only:
     - master
-
-before_install: gem install bundler -v 2.1.4
