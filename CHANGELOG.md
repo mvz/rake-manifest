@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0 / 2021-01-08
+
+* Keep directories out of the manifest and only include files. This as a
+  breaking change that will require the manifest file to be updated or
+  regenerated.
+
 ## 0.1.1 / 2020-08-23
 
 * Improve handling of literal file names in the patterns list:
