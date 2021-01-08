@@ -52,8 +52,36 @@ RSpec.describe Rake::Manifest::Task do
       end
     end
 
-    it "skips literal file names that do not exist" do
+    it "skips literal file names in the patterns if the files do not exist" do
       described_class.new { |c| c.patterns = ["*.rb", "FOO"] }
+      FileUtils.touch "foo.rb"
+      rake.invoke_task "manifest:generate"
+      manifest = File.read("Manifest.txt")
+      expect(manifest).to eq "foo.rb\n"
+    end
+
+    it "includes literal file names in the patterns if the files exist" do
+      described_class.new { |c| c.patterns = ["*.rb", "FOO"] }
+      FileUtils.touch "foo.rb"
+      FileUtils.touch "FOO"
+      rake.invoke_task "manifest:generate"
+      manifest = File.read("Manifest.txt")
+      expect(manifest).to eq "foo.rb\nFOO\n"
+    end
+
+    it "does not include directories in the manifest when using the default pattern" do
+      described_class.new
+      Dir.mkdir "foo"
+      FileUtils.touch "foo.rb"
+      FileUtils.touch "foo/foo.rb"
+      rake.invoke_task "manifest:generate"
+      manifest = File.read("Manifest.txt")
+      expect(manifest).to eq "Manifest.txt\nfoo.rb\nfoo/foo.rb\n"
+    end
+
+    it "does not include directories in the manifest even if the pattern includes them" do
+      described_class.new { |c| c.patterns = ["*.rb", "foo"] }
+      Dir.mkdir "foo"
       FileUtils.touch "foo.rb"
       rake.invoke_task "manifest:generate"
       manifest = File.read("Manifest.txt")
