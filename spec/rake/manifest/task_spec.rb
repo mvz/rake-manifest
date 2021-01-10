@@ -106,7 +106,8 @@ RSpec.describe Rake::Manifest::Task do
       File.write("MyManifest.txt", "MyManifest.txt\nfoo.rb\n")
 
       described_class.new { |c| c.manifest_file = "MyManifest.txt" }
-      expect { rake.invoke_task "manifest:check" }.not_to raise_error
+      expect { rake.invoke_task "manifest:check" }
+        .to output("Manifest check succesful\n").to_stdout
     end
 
     it "detects when literal file names from the patterns do not exist" do
