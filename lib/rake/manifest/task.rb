@@ -43,7 +43,9 @@ module Rake
       def define_check_task
         desc "Check manifest"
         task :check do
-          unless gemmable_files == manifest_files
+          if gemmable_files == manifest_files
+            puts "Manifest check succesful"
+          else
             raise "Manifest check failed, try recreating the manifest"
           end
         end
