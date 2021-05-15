@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1 / 2021-05-15
+
+* Emit success message when manifest check is succesful
+
 ## 0.2.0 / 2021-01-08
 
 * Keep directories out of the manifest and only include files. This as a
