@@ -28,6 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop-packaging", "~> 0.5.0"
   spec.add_development_dependency "rubocop-performance", "~> 1.11.3"
   spec.add_development_dependency "rubocop-rake", "~> 0.6.0"
-  spec.add_development_dependency "rubocop-rspec", "~> 2.4.0"
+  spec.add_development_dependency "rubocop-rspec", "~> 2.5.0"
   spec.add_development_dependency "simplecov", [">= 0.18.0", "< 0.22.0"]
 end
