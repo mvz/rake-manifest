@@ -3,14 +3,15 @@
 require_relative "lib/rake/manifest/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "rake-manifest"
-  spec.version       = Rake::Manifest::VERSION
-  spec.authors       = ["Matijs van Zuijlen"]
-  spec.email         = ["matijs@matijs.net"]
+  spec.name = "rake-manifest"
+  spec.version = Rake::Manifest::VERSION
 
-  spec.summary       = "Rake tasks to generate and check a manifest file"
-  spec.homepage      = "https://github.com/mvz/rake-manifest"
-  spec.license       = "MIT"
+  spec.authors = ["Matijs van Zuijlen"]
+  spec.email = ["matijs@matijs.net"]
+
+  spec.summary = "Rake tasks to generate and check a manifest file"
+  spec.homepage = "https://github.com/mvz/rake-manifest"
+  spec.license = "MIT"
 
   spec.required_ruby_version = ">= 2.6.0"
 
@@ -20,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.metadata["rubygems_mfa_required"] = "true"
 
   spec.files = File.read("Manifest.txt").split
+
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "pry", "~> 0.14.0"
