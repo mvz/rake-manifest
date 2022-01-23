@@ -10,6 +10,5 @@ Rake::Manifest::Task.new do |t|
   t.patterns = ["lib/**/*", "LICENSE.txt", "*.md"]
 end
 
-Rake::Task[:build].enhance ["manifest:check"]
-
-task default: :spec
+task build: ["manifest:check"]
+task default: [:spec, "manifest:check"]
