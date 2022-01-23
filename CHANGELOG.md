@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.2 / 2022-01-23
+
+* Drop support for Ruby 2.4
+* Support Ruby 3.1
+
 ## 0.2.1 / 2021-05-15
 
 * Emit success message when manifest check is succesful
