@@ -116,7 +116,25 @@ RSpec.describe Rake::Manifest::Task do
 
       described_class.new { |c| c.patterns = ["*.rb", "FOO"] }
       expect { rake.invoke_task "manifest:check" }
-        .to raise_error "Manifest check failed, try recreating the manifest"
+        .to raise_error(/Manifest check failed, try recreating the manifest/)
+    end
+
+    it "mentions the generate task name in the failure message" do
+      File.write("Manifest.txt", "foo.rb\n")
+
+      described_class.new { |c| c.patterns = ["*.rb"] }
+      expect { rake.invoke_task "manifest:check" }
+        .to raise_error "Manifest check failed, try recreating the manifest" \
+                        " using manifest:generate"
+    end
+
+    it "uses any custom namespace for the generate task name in the failure message" do
+      File.write("Manifest.txt", "foo.rb\n")
+
+      described_class.new(:foo) { |c| c.patterns = ["*.rb"] }
+      expect { rake.invoke_task "foo:check" }
+        .to raise_error "Manifest check failed, try recreating the manifest" \
+                        " using foo:generate"
     end
   end
 end

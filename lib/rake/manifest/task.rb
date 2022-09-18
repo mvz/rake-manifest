@@ -6,13 +6,14 @@ module Rake
   module Manifest
     # Tasks to create and check manifest file
     class Task < Rake::TaskLib
-      attr_accessor :manifest_file, :patterns
+      attr_accessor :manifest_file, :patterns, :name
 
       def initialize(name = :manifest)
         super()
 
         self.manifest_file = "Manifest.txt"
         self.patterns = ["**/*"]
+        self.name = name
 
         yield self if block_given?
 
@@ -46,7 +47,8 @@ module Rake
           if gemmable_files == manifest_files
             puts "Manifest check succesful"
           else
-            raise "Manifest check failed, try recreating the manifest"
+            raise "Manifest check failed, try recreating the manifest" \
+                  " using #{name}:generate"
           end
         end
       end
