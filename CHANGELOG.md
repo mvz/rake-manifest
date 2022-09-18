@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.3 / 2022-09-18
+
+* Print generate task name when check task fails
+
 ## 0.2.2 / 2022-01-23
 
 * Drop support for Ruby 2.4
