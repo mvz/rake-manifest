@@ -27,7 +27,7 @@ RSpec.describe Rake::Manifest::Task do
   it "allows setting the generated namespace" do
     described_class.new(:foo)
     expect(rake.tasks.map(&:name))
-      .to match_array ["foo:check", "foo:generate"]
+      .to contain_exactly("foo:check", "foo:generate")
   end
 
   describe "the manifest:generate task" do
