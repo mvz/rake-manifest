@@ -24,10 +24,10 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "rubocop", "~> 1.44"
-  spec.add_development_dependency "rubocop-packaging", "~> 0.5.0"
-  spec.add_development_dependency "rubocop-performance", "~> 1.13"
-  spec.add_development_dependency "rubocop-rake", "~> 0.6.0"
-  spec.add_development_dependency "rubocop-rspec", ">= 2.9", "< 4.0"
+  spec.add_development_dependency "rubocop", "~> 1.72"
+  spec.add_development_dependency "rubocop-packaging", "~> 0.5.2"
+  spec.add_development_dependency "rubocop-performance", "~> 1.24"
+  spec.add_development_dependency "rubocop-rake", "~> 0.7.1"
+  spec.add_development_dependency "rubocop-rspec", "~> 3.5"
   spec.add_development_dependency "simplecov", "~> 0.22.0"
 end
