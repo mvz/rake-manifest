@@ -4,11 +4,13 @@ inherit_mode:
   merge:
     - Exclude
 
-require:
+plugins:
   - rubocop-rake
   - rubocop-rspec
-  - rubocop-packaging
   - rubocop-performance
+
+require:
+  - rubocop-packaging
 
 AllCops:
   NewCops: enable
