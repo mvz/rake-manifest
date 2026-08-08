@@ -3,8 +3,6 @@
 begin
   require "simplecov"
   SimpleCov.start do
-    add_group "Main", "lib"
-    add_group "Specs", "spec"
     enable_coverage :branch
   end
 rescue LoadError
