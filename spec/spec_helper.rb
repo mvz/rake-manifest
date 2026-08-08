@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
-require "simplecov"
-SimpleCov.start do
-  add_group "Main", "lib"
-  add_group "Specs", "spec"
-  enable_coverage :branch
+begin
+  require "simplecov"
+  SimpleCov.start do
+    enable_coverage :branch
+  end
+rescue LoadError
+  # simpleconv not available
 end
 
 require "rake/manifest"
