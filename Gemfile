@@ -5,7 +5,7 @@ source "https://rubygems.org"
 group :development, :test do
   gem "rake", "~> 13.0"
   gem "rspec", "~> 3.0"
-  gem "simplecov", "~> 1.0.0" if RUBY_VERSION >= "3.2.0"
+  gem "simplecov", "~> 1.0" if RUBY_VERSION >= "3.2.0"
 end
 
 group :development do
